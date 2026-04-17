@@ -1,10 +1,12 @@
+import java.io.*;
 import java.util.*;
 
 public class lab5task1 {
-    public static void main(String[] args) {
-        Scanner RHT = new Scanner(System.in);
-        int b = RHT.nextInt();
-        int a1 = RHT.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer tokenizer = new StringTokenizer(reader.readLine());
+        int b = Integer.parseInt(tokenizer.nextToken());
+        int a1 = Integer.parseInt(tokenizer.nextToken());
 
         List<List<Integer>> b1 = new ArrayList<>();
         for (int i = 0; i <= b; i++) {
@@ -12,8 +14,9 @@ public class lab5task1 {
         }
 
         for (int i = 0; i < a1; i++) {
-            int x = RHT.nextInt();
-            int y = RHT.nextInt();
+            tokenizer = new StringTokenizer(reader.readLine());
+            int x = Integer.parseInt(tokenizer.nextToken());
+            int y = Integer.parseInt(tokenizer.nextToken());
             if (x != y) {
                 b1.get(x).add(y);
                 b1.get(y).add(x);
@@ -44,12 +47,15 @@ public class lab5task1 {
                 }
             }
         }
+
+        StringBuilder output = new StringBuilder();
         int yy = dss.size();
         for (int kl = 0; kl < yy; kl++) {
-            System.out.print(dss.get(kl));
+            output.append(dss.get(kl));
             if (kl < yy - 1)
-                System.out.print(" ");
+                output.append(' ');
         }
-        RHT.close();
+
+        System.out.print(output);
     }
 }
